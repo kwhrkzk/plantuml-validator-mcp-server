@@ -1,0 +1,292 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <base href="/" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache, must-revalidate" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=1" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="min/plantuml.min.css" />
+<script src="min/plantuml.min.js"></script>
+<script src="min/plantuml-language.min.js"></script>
+<script src="webjars/monaco-editor/0.36.1/min/vs/loader.js"></script>
+
+  <title>PlantUML Server</title>
+</head>
+<body>
+  <div class="app flex-rows">
+    <div class="header">
+      <h1>PlantUML Server</h1>
+
+
+  <div>
+  <img
+    style="display: inline; position: absolute; top: 0; right: 0; border: 0; max-width: 25%;"
+    class="no-filter"
+    src="assets/github-fork-me.svg"
+    alt="Fork me on GitHub"
+    usemap="#github-banner"
+  />
+  <map id="github-banner" name="github-banner" style="cursor: pointer;">
+    <area
+      shape="poly"
+      coords="10,0 50,0 149,100 149,140"
+      href="https://github.com/plantuml/plantuml-server"
+      alt="Fork me on GitHub"
+    />
+  </map>
+</div>
+
+
+<p>Create your <a href="https://plantuml.com">PlantUML</a> diagrams directly in your browser!</p>
+
+    </div>
+    <div class="main flex-main flex-columns">
+      <div id="editor-main-container" class="editor flex-main flex-rows">
+  <div>
+    <div class="btn-input">
+  <input id="url" type="text" name="url" value="png/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" />
+  <input id="url-copy-btn" type="image" alt="copy" src="assets/actions/copy.svg" tabindex="-1" />
+</div>
+
+  </div>
+  <div class="flex-main monaco-editor-container">
+    <textarea id="initCode" name="initCode" style="display: none;">@startuml
+Bob -&gt; Alice : hello
+@enduml</textarea>
+    <div id="monaco-editor"></div>
+    <div class="editor-menu" tabindex="-1">
+  <div class="menu-kebab">
+    <div class="kebab-circle"></div>
+    <div class="kebab-circle"></div>
+    <div class="kebab-circle"></div>
+    <div class="kebab-circle"></div>
+    <div class="kebab-circle"></div>
+  </div>
+  <div class="menu-items">
+    <input
+      id="menu-item-editor-code-copy"
+      class="menu-item"
+      type="image"
+      alt="copy"
+      title="Copy code"
+      src="assets/actions/copy.svg"
+    />
+    <input
+      class="menu-item"
+      type="image"
+      alt="import"
+      title="Import diagram"
+      src="assets/actions/upload.svg"
+      onclick="openModal('diagram-import')"
+    />
+    <input
+      class="menu-item"
+      type="image"
+      alt="export"
+      title="Export diagram"
+      src="assets/actions/download.svg"
+      onclick="openModal('diagram-export')"
+    />
+  </div>
+</div>
+
+  </div>
+</div>
+
+      <div id="previewer-main-container" class="previewer flex-main">
+        <div class="previewer-container flex-rows">
+  <div class="preview-menu">
+  <div class="diagram-links flex-columns">
+    <span>View as:</span>
+    <a class="diagram-link" data-img-type="png" href="png/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" title="View diagram as PNG">
+      <img src="assets/file-types/png.svg" alt="PNG" />
+    </a>
+    <a class="diagram-link" data-img-type="svg" href="svg/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" title="View diagram as SVG">
+      <img src="assets/file-types/svg.svg" alt="SVG" />
+    </a>
+    <a class="diagram-link" data-img-type="txt" href="txt/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" title="View diagram as ASCII Art">
+      <img src="assets/file-types/ascii.svg" alt="ASCII Art" />
+    </a>
+    <a class="diagram-link" data-img-type="pdf" href="pdf/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" title="View diagram as PDF">
+      <img src="assets/file-types/pdf.svg" alt="PDF" />
+    </a>
+    <a
+      id="map-diagram-link"
+      class="diagram-link"
+      data-img-type="map"
+      href="map/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000"
+      title="View diagram as Map Data"
+      
+        style="display: none;"
+      
+    >
+        <img src="assets/file-types/map.svg" alt="MAP" />
+    </a>
+    <div class="flex-main menu-r">
+      <div class="btn-float-r">
+        <input
+          id="btn-settings"
+          class="btn-settings"
+          type="image"
+          src="assets/actions/settings.svg"
+          alt="settings"
+          onclick="openModal('settings')"
+        />
+        <input
+          id="btn-undock"
+          class="btn-dock"
+          type="image"
+          src="assets/actions/undock.svg"
+          alt="undock"
+        />
+        <input
+          id="btn-dock"
+          class="btn-dock"
+          type="image"
+          src="assets/actions/dock.svg"
+          alt="dock"
+          onclick="window.close();"
+          style="display: none;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="hr"></div>
+  <div id="paginator" data-number-of-diagram-pages="1" style="display: none;"></div>
+
+  <div id="paginator" data-number-of-diagram-pages="1" style="display: none;"></div>
+  <div class="previewer-main flex-main">
+    <div id="diagram" class="diagram">
+  <div>
+    <!-- PNG -->
+    <img id="diagram-png" src="png/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000" alt="PlantUML diagram" usemap="#plantuml_map" />
+    
+      <map id="plantuml_map" name="plantuml_map"></map>
+    
+    <!-- SVG -->
+    <svg id="diagram-svg" style="display: none;"></svg>
+    <!-- ASCII Art -->
+    <pre id="diagram-txt" style="display: none;"></pre>
+    <!-- PDF -->
+    <object id="diagram-pdf" data="" type="application/pdf" width="100%" height="100%" style="display: none;">
+      <p>Unable to display PDF file.</p>
+    </object>
+  </div>
+</div>
+
+  </div>
+  
+  <!-- global modals -->
+  <div id="settings" class="modal" style="display: none;" tabindex="-1">
+  <div class="modal-content flex-rows">
+    <div class="modal-header">
+      <h2>Settings</h2>
+      <div class="hr"></div>
+    </div>
+    <div class="modal-main flex-main">
+      <div class="label-input-pair flex-columns">
+        <label for="theme">Theme:</label>
+        <select class="flex-main" id="theme" name="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+      <div class="label-input-pair flex-columns">
+        <label for="diagramPreviewType">Diagram Preview Type:</label>
+        <select class="flex-main" id="diagramPreviewType" name="diagramPreviewType">
+          <option value="png">PNG</option>
+          <option value="svg">SVG</option>
+          <option value="txt">ASCII Art</option>
+          <option value="pdf">PDF</option>
+        </select>
+      </div>
+      <div class="label-input-pair flex-columns">
+        <label for="editorWatcherTimeout">Editor Watcher Timeout:</label>
+        <input class="flex-main" id="editorWatcherTimeout" type="number" pattern="[1-9]+[0-9]*" value="" />
+      </div>
+      <div class="label-input-pair flex-main">
+        <label for="editorCreateOptions">Monaco Editor Create Options:</label>
+        <br />
+        <div id="settings-monaco-editor"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input id="settings-ok-btn" class="ok" type="button" value="Save" />
+      <input class="cancel" type="button" value="Cancel" onclick="closeModal('settings');" />
+    </div>
+  </div>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="footer">
+      <p>PlantUML version 1.2024.3 (Thu Feb 15 19:40:05 UTC 2024)</p>
+
+    </div>
+    <!-- editor modals -->
+    <div id="diagram-import" class="modal" style="display: none;" tabindex="-1">
+  <div class="modal-content flex-rows">
+    <div class="modal-header">
+      <h2>Import Diagram</h2>
+      <div class="hr"></div>
+    </div>
+    <div class="modal-main flex-main">
+      <input id="diagram-import-input" type="file" name="diagram" />
+      <p id="diagram-import-error-message" class="error-message"></p>
+    </div>
+    <div class="modal-footer">
+      <input id="diagram-import-ok-btn" class="ok" type="button" value="Import" disabled />
+      <input id="diagram-import-cancel-btn" class="cancel" type="button" value="Cancel" onclick="closeModal('diagram-import');" />
+    </div>
+  </div>
+</div>
+
+    <div id="diagram-export" class="modal" style="display: none;" tabindex="-1">
+  <div class="modal-content flex-rows">
+    <div class="modal-header">
+      <h2>Export Diagram</h2>
+      <div class="hr"></div>
+    </div>
+    <div class="modal-main flex-main">
+      <div class="label-input-pair flex-columns">
+        <label for="download-name">Diagram name:</label>
+        <input class="flex-main" id="download-name" value="diagram.puml" />
+      </div>
+      <div class="label-input-pair flex-columns">
+        <label for="download-type">Diagram type:</label>
+        <select class="flex-main" id="download-type" name="download-type">
+          <option value="txt">ASCII Art</option>
+          <option value="base64">Base64</option>
+          <option value="eps">EPS</option>
+          <option value="epstext">EPS Text</option>
+          <option value="map">MAP</option>
+          <option value="pdf">PDF</option>
+          <option value="code" selected>PlantUML source code</option>
+          <option value="png">PNG</option>
+          <option value="svg">SVG</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input id="diagram-export-ok-btn" class="ok" type="button" value="Export" />
+      <input class="cancel" type="button" value="Cancel" onclick="closeModal('diagram-export')" />
+    </div>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>

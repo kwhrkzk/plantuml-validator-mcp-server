@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+!include <logos/visual-studio-code.puml>
+!include <cloudogu/dogus/plantuml.puml>
+
+title "Project Overview"
+package "Docker Compose" {
+  node myplantuml as "PlantUML Server" <<$plantuml>> {
+  }
+  note right of myplantuml
+    Remote Service
+  end note
+  node plantuml_mcp_server as "PlantUML MCP Server" <<container>> {
+  }
+  note right of plantuml_mcp_server
+    MCP Server
+  end note
+}
+plantuml_mcp_server <-> myplantuml : Communicates via port 8080
+actor user
+node vscode as "github copilot" <<$visual-studio-code>>
+note right of vscode
+  Host with MCP Client
+end note
+user --> vscode
+vscode <--> plantuml_mcp_server: Communicates via port 3000
+user --> myplantuml: Communicates via port 8080
+
+@enduml

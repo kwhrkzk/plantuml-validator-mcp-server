@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "plantuml-mcp-server", "plantuml-mcp-server\plantuml-mcp-server.csproj", "{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "plantuml-mcp-server-test", "plantuml-mcp-server-test\plantuml-mcp-server-test.csproj", "{F2107712-D105-513D-10CB-A98AC24A58BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2107712-D105-513D-10CB-A98AC24A58BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2107712-D105-513D-10CB-A98AC24A58BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2107712-D105-513D-10CB-A98AC24A58BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2107712-D105-513D-10CB-A98AC24A58BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27E6EDB0-5067-4BCD-81AE-7BF83C757491}
+	EndGlobalSection
+EndGlobal

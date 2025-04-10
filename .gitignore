@@ -1,0 +1,30 @@
+# Build results
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Package directories
+packages/
+.vs/

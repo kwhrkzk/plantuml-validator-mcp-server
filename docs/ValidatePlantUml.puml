@@ -1,0 +1,24 @@
+@startuml sequence
+title ValidatePlantUml
+start
+:Receive PlantUML message;
+
+:Encode the message;
+:Construct URL for validation;
+
+:Send HTTP GET request to the URL;
+if (Response is successful?) then (yes)
+    :Read response content;
+    :Extract headers;
+    if (Headers indicate error?) then (yes)
+        :Build error details;
+        stop
+    else (no)
+        :Return "Ok";
+        stop
+    endif
+else (no)
+    :Return exception message;
+    stop
+endif
+@enduml
