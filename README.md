@@ -7,7 +7,7 @@ This project is an MCP server for validating PlantUML code.
 ### ValidatePlantUml
 Validates the provided PlantUML message. If valid, it returns "Ok". If invalid, it returns detailed error information, including an error description, the line where the error occurred, and other metadata.
 
-![validatePlantUml](./docs/validatePlantUml.png)
+![validatePlantUml](./docs/ValidatePlantUml.png)
 
 ## Usage
 
