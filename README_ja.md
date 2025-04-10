@@ -7,7 +7,7 @@
 ### ValidatePlantUml
 提供されたPlantUMLのメッセージを検証します。有効な場合は「Ok」を返します。無効な場合は、エラーの説明、エラーが発生した行、その他のメタデータを含む詳細なエラー情報を返します。
 
-![validatePlantUml](./docs/validatePlantUml.png)
+![validatePlantUml](./docs/ValidatePlantUml.png)
 
 ## 使用方法
 
