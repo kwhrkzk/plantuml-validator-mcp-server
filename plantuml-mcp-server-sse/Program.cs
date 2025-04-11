@@ -1,8 +1,11 @@
+using PlantumlTools;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddCommandLine(args);
 
-builder.Services.AddMcpServer()
-    .WithToolsFromAssembly();
+builder.Services
+    .AddMcpServer()
+    .WithTools<PlantumlTool>();
 
 var app = builder.Build();
 

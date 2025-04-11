@@ -3,7 +3,7 @@ services:
     image: plantuml/plantuml-server:v1.2025.2
     ports:
       - "8080:8080"
-  plantuml-mcp-server:
+  plantuml-mcp-server-sse:
     image: mcr.microsoft.com/dotnet/sdk:9.0
     volumes:
       - .:/workspace
@@ -14,7 +14,7 @@ services:
       - PlantUmlBaseUrl=http://myplantuml:8080/
     command:
       # Use the following for Debug mode:
-      # [ "dotnet", "run", "--project", "plantuml-mcp-server/plantuml-mcp-server.csproj", "--", "PlantUmlBaseUrl=$PlantUmlBaseUrl" ]
+      # [ "dotnet", "run", "--project", "plantuml-mcp-server-sse/plantuml-mcp-server-sse.csproj", "--", "PlantUmlBaseUrl=$PlantUmlBaseUrl" ]
 
       # Use the following for Production mode:
-      [ "dotnet", "run", "--project", "plantuml-mcp-server/plantuml-mcp-server.csproj", "--configuration", "Release", "--", "PlantUmlBaseUrl=$PlantUmlBaseUrl" ]
+      [ "dotnet", "run", "--project", "plantuml-mcp-server-sse/plantuml-mcp-server-sse.csproj", "--configuration", "Release", "--", "PlantUmlBaseUrl=$PlantUmlBaseUrl" ]

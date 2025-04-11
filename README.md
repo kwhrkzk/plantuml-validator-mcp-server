@@ -1,15 +1,16 @@
-# PlantUML Validation MCP Server
+# Plantuml Validation MCP Server
 
-This project is an MCP server for validating PlantUML code.
-![overview](./docs/overview.png)
+This project is an MCP server for validating Plantuml code.
 
 ## Tools
-### ValidatePlantUml
-Validates the provided PlantUML message. If valid, it returns "Ok". If invalid, it returns detailed error information, including an error description, the line where the error occurred, and other metadata.
+### ValidatePlantuml
+Validates the provided Plantuml message. If valid, it returns "Ok". If invalid, it returns detailed error information, including the error description, the line where the error occurred, and other metadata.
 
-![validatePlantUml](./docs/ValidatePlantUml.png)
+![validatePlantuml](./docs/ValidatePlantuml.png)
 
-## Usage
+## Usage with SSE
+
+![overview-sse](./docs/overview-sse.png)
 
 ### 1. Run Docker Compose
 Run the following command to start the server:
@@ -18,7 +19,7 @@ Run the following command to start the server:
 docker compose up -d
 ```
 
-### 2. VSCode MCP Configuration
+### 2. MCP Configuration in VSCode
 
 ```json: settings.json
     "mcp": {
@@ -27,6 +28,37 @@ docker compose up -d
                 "type": "sse",
                 "url": "http://localhost:3000/sse"
             }
+        }
+    }
+```
+
+## Usage with Docker
+
+![overview-docker](./docs/overview-docker.png)
+
+### 1. Build and Publish the Container
+```bash
+cd plantuml-mcp-server-stdio
+dotnet publish /t:PublishContainer
+```
+
+### 2. MCP Configuration in VSCode
+
+```json: settings.json
+    "mcp": {
+        "servers": {
+            "my-plantuml-mcp-server-docker": {
+                "type": "stdio",
+                "command": "docker",
+                "args": [
+                    "run",
+                    "--rm",
+                    "-i",
+                    "--network=host",
+                    "plantuml-mcp-server-stdio",
+                    "PlantumlBaseUrl=http://your_plantuml_server/"
+                ],
+            },
         }
     }
 ```

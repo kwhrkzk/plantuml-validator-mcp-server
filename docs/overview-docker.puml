@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+!include <logos/visual-studio-code.puml>
+!include <cloudogu/dogus/plantuml.puml>
+
+title "Project Overview"
+  node myplantuml as "PlantUML Server" <<$plantuml>> {
+  }
+  note bottom of myplantuml
+    Remote Service
+  end note
+
+package "Docker" {
+  node plantuml_mcp_server as "PlantUML MCP Server" <<container>> {
+  }
+  note top of plantuml_mcp_server
+    MCP Server
+  end note
+}
+plantuml_mcp_server <-> myplantuml : Communicates
+actor user
+node vscode as "github copilot" <<$visual-studio-code>>
+note bottom of vscode
+  Host with MCP Client
+end note
+user --> vscode
+vscode <--> plantuml_mcp_server: docker run
+
+@enduml

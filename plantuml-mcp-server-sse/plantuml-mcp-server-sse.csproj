@@ -4,11 +4,15 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>plantuml_mcp_server</RootNamespace>
+    <RootNamespace>plantuml_mcp_server-sse</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ModelContextProtocol.AspNetCore" Version="0.1.0-preview.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\plantuml-mcp-tools\plantuml-mcp-tools.csproj" />
   </ItemGroup>
 
 </Project>

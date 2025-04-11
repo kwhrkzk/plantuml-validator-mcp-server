@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "plantuml-mcp-server", "plantuml-mcp-server\plantuml-mcp-server.csproj", "{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plantuml-mcp-server-sse", "Plantuml-mcp-server-sse\Plantuml-mcp-server-sse.csproj", "{CDF7B6DF-4909-9E19-387A-7165CB3EFEAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "plantuml-mcp-server-test", "plantuml-mcp-server-test\plantuml-mcp-server-test.csproj", "{F2107712-D105-513D-10CB-A98AC24A58BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plantuml-mcp-tools-test", "Plantuml-mcp-tools-test\plantuml-mcp-tools-test.csproj", "{F2107712-D105-513D-10CB-A98AC24A58BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <RootNamespace>plantuml_mcp_server_stdio</RootNamespace>
+
+    <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+    <ContainerRepository>plantuml-mcp-server-stdio</ContainerRepository>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:9.0-alpine</ContainerBaseImage>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.4" />
+    <PackageReference Include="ModelContextProtocol" Version="0.1.0-preview.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\plantuml-mcp-tools\plantuml-mcp-tools.csproj" />
+  </ItemGroup>
+
+</Project>
