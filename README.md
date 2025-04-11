@@ -6,7 +6,7 @@ This project is an MCP server for validating Plantuml code.
 ### ValidatePlantuml
 Validates the provided Plantuml message. If valid, it returns "Ok". If invalid, it returns detailed error information, including the error description, the line where the error occurred, and other metadata.
 
-![validatePlantuml](./docs/ValidatePlantuml.png)
+![validatePlantuml](./docs/ValidatePlantUml.png)
 
 ## Usage with SSE
 

@@ -1,4 +1,4 @@
-@startuml sequence
+@startuml
 title ValidatePlantUml
 start
 :Receive PlantUML message;
