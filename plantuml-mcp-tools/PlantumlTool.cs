@@ -128,5 +128,41 @@ namespace PlantumlTools
 
             return encoded.ToString();
         }
+
+
+        [McpServerTool, Description("Decodes an encoded PlantUML string and returns the original string.")]
+        private string DecodePlantuml(string encoded)
+        {
+            const string plantUmlChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+            var charMap = plantUmlChars.Select((c, i) => new { c, i }).ToDictionary(x => x.c, x => x.i);
+
+            var decodedBytes = new List<byte>();
+            int current = 0;
+            int bits = 0;
+
+            foreach (var c in encoded)
+            {
+                if (!charMap.TryGetValue(c, out var value))
+                {
+                    throw new ArgumentException("Invalid character in encoded string.");
+                }
+
+                current = (current << 6) | value;
+                bits += 6;
+
+                if (bits >= 8)
+                {
+                    bits -= 8;
+                    decodedBytes.Add((byte)((current >> bits) & 0xFF));
+                }
+            }
+
+            using (var memoryStream = new MemoryStream(decodedBytes.ToArray()))
+            using (var deflateStream = new DeflateStream(memoryStream, CompressionMode.Decompress))
+            using (var reader = new StreamReader(deflateStream, Encoding.UTF8))
+            {
+                return reader.ReadToEnd();
+            }
+        }
     }
 }
