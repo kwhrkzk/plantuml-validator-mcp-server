@@ -90,7 +90,8 @@ namespace PlantumlTools
             }
         }
 
-        private string EncodePlantuml(string uml)
+        [McpServerTool, Description("Encodes a PlantUML message into a compressed and URL-safe string format.")]
+        public string EncodePlantuml(string uml)
         {
             byte[] compressedBytes;
             using (var memoryStream = new MemoryStream())
