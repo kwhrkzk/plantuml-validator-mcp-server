@@ -1,0 +1,22 @@
+@startuml
+!include <cloudogu/dogus/plantuml.puml>
+participant  plantuml_mcp_server
+participant myplantuml <<$plantuml>>
+
+plantuml_mcp_server -> myplantuml: GET /txt/{encodedMessage}
+alt Valid response
+    myplantuml --> plantuml_mcp_server: Response with validation result
+    note right of plantuml_mcp_server
+      Headers:
+      - X-PlantUML-Diagram-Description: Valid diagram
+    end note
+else Error response
+    myplantuml --> plantuml_mcp_server: Response with validation result
+    note right of plantuml_mcp_server
+      Headers:
+      - X-PlantUML-Diagram-Description: Error details
+      - X-PlantUML-Diagram-Error: Specific error message
+      - X-PlantUML-Diagram-Error-Line: Line number of the error
+    end note
+end
+@enduml

@@ -2,11 +2,16 @@
 
 This project is an MCP server for validating Plantuml code.
 
+🏅 Certified by MCPHub
+
+[This project is certified by MCPHub.](https://mcphub.com/mcp-servers/kwhrkzk/plantuml-validator-mcp-server)
+
 ## Tools
 ### ValidatePlantuml
 Validates the provided Plantuml message. If valid, it returns "Ok". If invalid, it returns detailed error information, including the error description, the line where the error occurred, and other metadata.
 
 ![validatePlantuml](./docs/ValidatePlantUml.png)
+![sequence](./docs/sequence.png)
 
 ## Usage with SSE
 
