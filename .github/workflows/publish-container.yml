@@ -46,8 +46,8 @@ jobs:
       run: |
         dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj \
         -p:ContainerRegistry=${{ env.REGISTRY }} \
-        -p:ContainerRepository=${{ env.REGISTRY }}/${{ github.repository_owner }}/plantuml-validator-mcp-server \
+        -p:ContainerRepository=${{ github.repository_owner }}/plantuml-validator-mcp-server \
         -p:ContainerImageTag=${{ inputs.tag || github.ref_name }}
       env:
-        CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
-        CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        DOTNET_CONTAINER_REGISTRY_UNAME: ${{ github.actor }}
+        DOTNET_CONTAINER_REGISTRY_PWORD: ${{ secrets.GITHUB_TOKEN }}
