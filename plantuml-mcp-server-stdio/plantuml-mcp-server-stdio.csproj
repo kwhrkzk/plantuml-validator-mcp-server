@@ -10,10 +10,8 @@
 
     <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
     <ContainerRepository>kwhrkzk/plantuml-validator-mcp-server</ContainerRepository>
-    <!-- <ContainerRegistry>ghcr.io</ContainerRegistry> -->
     <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:9.0-alpine</ContainerBaseImage>
     <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
-    <ContainerImageTag>1.0.0</ContainerImageTag>
   </PropertyGroup>
 
   <ItemGroup>
