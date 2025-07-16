@@ -34,9 +34,5 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     # 2. .NETコンテナイメージをビルド・pushする
     - name: Build and Push .NET Container
-      uses: dotnet/build-push-container-action@v2
-      with:
-        project-file: './plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj'
-        image-name: ${{ env.IMAGE_NAME }}
-        registry: ${{ env.REGISTRY }}
-        tag: ${{ github.ref_name }} 
+      run: |
+        dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj
