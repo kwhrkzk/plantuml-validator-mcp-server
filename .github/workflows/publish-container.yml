@@ -4,6 +4,13 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Container image tag'
+        required: true
+        default: 'manual-test'
+        type: string
 
 env:
   REGISTRY: ghcr.io
@@ -38,4 +45,4 @@ jobs:
         dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj \
         -p:ContainerRegistry=ghcr.io \
         -p:ContainerRepository=${{ github.repository_owner }}/plantuml-validator-mcp-server \
-        -p:ContainerImageTag=${{ github.ref_name }}
+        -p:ContainerImageTag=${{ inputs.tag || github.ref_name }}
