@@ -35,4 +35,5 @@ jobs:
     # 2. .NETコンテナイメージをビルド・pushする
     - name: Build and Push .NET Container
       run: |
-        dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj
+        dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj \
+        -p:ContainerRegistry=ghcr.io
