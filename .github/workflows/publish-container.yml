@@ -24,12 +24,18 @@ jobs:
       with:
         dotnet-version: '9.0.x'
     
-    # .NETコンテナイメージをビルド・pushする
+    # 1. ghcrにログインする
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    # 2. .NETコンテナイメージをビルド・pushする
     - name: Build and Push .NET Container
       run: |
         dotnet publish -t:PublishContainer ./plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj \
         -p:ContainerRegistry=ghcr.io \
+        -p:ContainerRepository=${{ github.repository_owner }}/plantuml-validator-mcp-server \
         -p:ContainerImageTag=${{ github.ref_name }}
-      env:
-        DOTNET_CONTAINER_REGISTRY_UNAME: ${{ github.actor }}
-        DOTNET_CONTAINER_REGISTRY_PWORD: ${{ secrets.GITHUB_TOKEN }}
