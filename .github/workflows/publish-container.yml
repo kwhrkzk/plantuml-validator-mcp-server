@@ -48,3 +48,6 @@ jobs:
         -p:ContainerRegistry=${{ env.REGISTRY }} \
         -p:ContainerRepository=${{ env.REGISTRY }}/${{ github.repository_owner }}/plantuml-validator-mcp-server \
         -p:ContainerImageTag=${{ inputs.tag || github.ref_name }}
+      env:
+        CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
+        CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}

@@ -8,10 +8,12 @@
 
     <RootNamespace>plantuml_mcp_server_stdio</RootNamespace>
 
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
     <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
     <ContainerRepository>kwhrkzk/plantuml-validator-mcp-server</ContainerRepository>
     <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:9.0-alpine</ContainerBaseImage>
-    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <ContainerUsername>$(CONTAINER_REGISTRY_USERNAME)</ContainerUsername>
+    <ContainerPassword>$(CONTAINER_REGISTRY_PASSWORD)</ContainerPassword>
   </PropertyGroup>
 
   <ItemGroup>
