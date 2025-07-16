@@ -1,0 +1,42 @@
+name: Build And Push Container Image
+
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: kwhrkzk/plantuml-validator-mcp-server
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    # イメージをプッシュする権限をGITHUB_TOKENに付与する
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    # .NET SDKのセットアップ
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+    
+    # 1. ghcrにログインする
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    # 2. .NETコンテナイメージをビルド・pushする
+    - name: Build and Push .NET Container
+      uses: dotnet/build-push-container-action@v2
+      with:
+        project-file: './plantuml-mcp-server-stdio/plantuml-mcp-server-stdio.csproj'
+        image-name: ${{ env.IMAGE_NAME }}
+        registry: ${{ env.REGISTRY }}
+        tag: ${{ github.ref_name }} 

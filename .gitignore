@@ -29,4 +29,6 @@ Thumbs.db
 packages/
 .vs/
 
-.github/**
+.github/copilot-instructions.md
+
+token

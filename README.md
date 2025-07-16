@@ -60,7 +60,7 @@ dotnet publish /t:PublishContainer
                     "--rm",
                     "-i",
                     "--network=host",
-                    "plantuml-mcp-server-stdio",
+                    "kwhrkzk/plantuml-validator-mcp-server:1.0.0",
                     "PlantumlBaseUrl=http://your_plantuml_server/"
                 ],
             },
